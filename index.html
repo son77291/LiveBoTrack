@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live BO Tracking</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f6f8;margin:0;padding:20px}
+h1{text-align:center}
+.card{background:#fff;padding:20px;border-radius:12px;max-width:500px;margin:20px auto;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+input,select,button{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ddd;font-size:16px}
+button{background:#16a34a;color:#fff;border:none;font-weight:bold}
+table{width:100%;border-collapse:collapse;margin-top:15px}
+th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
+.live{color:green;font-weight:bold}
+</style>
+</head>
+<body>
+<h1>📍 Live BO Tracking</h1>
+<div class="card">
+<p><span class="live">● LIVE</span> <span id="time"></span></p>
+<input id="name" placeholder="BO / Staff Name">
+<input id="place" placeholder="Place / Branch">
+<select id="status">
+<option>On Duty</option>
+<option>On Leave</option>
+<option>Field Visit</option>
+<option>Office</option>
+</select>
+<button onclick="addRow()">Add Tracking</button>
+<table>
+<thead><tr><th>Name</th><th>Place</th><th>Status</th></tr></thead>
+<tbody id="list"></tbody>
+</table>
+</div>
+<script>
+function addRow(){
+let n=document.getElementById('name').value;
+let p=document.getElementById('place').value;
+let s=document.getElementById('status').value;
+if(!n||!p){alert('Name & Place kodukku');return;}
+document.getElementById('list').innerHTML+=`<tr><td>${n}</td><td>${p}</td><td>${s}</td></tr>`;
+document.getElementById('name').value='';document.getElementById('place').value='';
+}
+setInterval(()=>{document.getElementById('time').innerText=new Date().toLocaleString();},1000);
+</script>
+</body>
+</html>
