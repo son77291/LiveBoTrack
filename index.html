@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackNow</title>
+<style>
+body{background:#0a0a0a;color:#fff;font-family:Arial;padding:16px;margin:0}
+h1{font-size:24px;margin:0} h1 span{color:#22c55e}
+.sub{color:#888;font-size:13px;margin:6px 0 14px}
+.live{background:#14532d;border:1px solid #22c55e;padding:12px;border-radius:12px;display:flex;justify-content:space-between;font-size:13px;margin-bottom:14px}
+.card{background:#151515;border:1px solid #222;border-radius:14px;padding:14px;display:flex;gap:12px;margin-bottom:10px;cursor:pointer;text-decoration:none;color:#fff;display:flex}
+.poster{font-size:32px}
+.info{flex:1} .info p{color:#888;font-size:12px;margin-top:3px}
+.gross{color:#22c55e;font-weight:900;text-align:right}
+.gross small{color:#888;font-weight:400;display:block;font-size:11px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:13px 8px;border-bottom:1px solid #222;text-align:left}
+th{color:#888;font-size:12px}
+.green{color:#22c55e;font-weight:bold}
+.total td{font-weight:900;background:#14532d}
+button{background:#222;color:#fff;border:none;padding:10px 14px;border-radius:10px;margin-bottom:12px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+
+<div id="home">
+<h1>📈 Track<span>Now</span></h1>
+<p class="sub">Simple Movie Gross Tracker</p>
+<div class="live"><span>🟢 LIVE</span><span id="next">Next Update 20:00</span></div>
+
+<!-- LIST - HTML IL THANNE, JS VENDA -->
+<div class="card" onclick="openMovie()">
+<div class="poster">🏹</div>
+<div class="info"><b>Ramayana</b><p>Hindi • Day 1</p></div>
+<div class="gross"><span id="homeGross">Rs.38.42 Cr</span><small>Tap to View →</small></div>
+</div>
+
+<div class="card" onclick="openMovie2()">
+<div class="poster">🔥</div>
+<div class="info"><b>Pushpa 2</b><p>Telugu • Day 45</p></div>
+<div class="gross">Rs.12.10 Cr<small>Tap to View →</small></div>
+</div>
+
+<div class="card" onclick="openMovie2()">
+<div class="poster">🚀</div>
+<div class="info"><b>Kalki 2898 AD</b><p>Telugu • Day 120</p></div>
+<div class="gross">Rs.8.75 Cr<small>Tap to View →</small></div>
+</div>
+
+<div class="card" onclick="openMovie2()">
+<div class="poster">🦁</div>
+<div class="info"><b>Toxic</b><p>Kannada • Coming Soon</p></div>
+<div class="gross">Rs.0.00 Cr<small>Coming Soon</small></div>
+</div>
+
+<p style="color:#555;font-size:12px;text-align:center;margin-top:14px">Gross thanne update aakum • 20 min koodumbol</p>
+</div>
+
+<div id="detail" class="hidden">
+<button onclick="showHome()">← Back</button>
+<h2 id="title">Ramayana</h2>
+<p class="sub">State Wise Gross • Auto Update</p>
+<div class="live"><span id="last">Last Updated: Just Now</span><span id="next2">20:00</span></div>
+<table>
+<tr><th>STATE</th><th>GROSS</th><th>SHOWS</th></tr>
+<tr><td>Maharashtra</td><td class="green" id="g1">Rs.9.24 Cr</td><td id="s1">3760</td></tr>
+<tr><td>Karnataka</td><td class="green" id="g2">Rs.7.52 Cr</td><td id="s2">1590</td></tr>
+<tr><td>Uttar Pradesh</td><td class="green" id="g3">Rs.5.19 Cr</td><td id="s3">2230</td></tr>
+<tr><td>Gujarat</td><td class="green" id="g4">Rs.3.91 Cr</td><td id="s4">3480</td></tr>
+<tr><td>Delhi</td><td class="green" id="g5">Rs.3.73 Cr</td><td id="s5">764</td></tr>
+<tr><td>Tamil Nadu</td><td class="green" id="g6">Rs.3.38 Cr</td><td id="s6">950</td></tr>
+<tr><td>Telangana</td><td class="green" id="g7">Rs.2.32 Cr</td><td id="s7">1160</td></tr>
+<tr><td>Kerala</td><td class="green" id="g8">Rs.1.85 Cr</td><td id="s8">820</td></tr>
+<tr class="total"><td>TOTAL</td><td class="green" id="tg">Rs.38.42 Cr</td><td id="ts">15754</td></tr>
+</table>
+</div>
+
+<script>
+function openMovie(){
+  document.getElementById("home").className = "hidden";
+  document.getElementById("detail").className = "";
+  window.scrollTo(0,0);
+}
+function openMovie2(){ openMovie(); }
+function showHome(){
+  document.getElementById("detail").className = "hidden";
+  document.getElementById("home").className = "";
+}
+var gross = [92400000,75200000,51900000,39100000,37300000,33800000,23200000,18500000];
+var shows = [3760,1590,2230,3480,764,950,1160,820];
+function fmt(n){ return "Rs." + (n/10000000).toFixed(2) + " Cr"; }
+function updateNumbers(){
+  var tot = 0; var tsh = 0;
+  for(var i=0;i<8;i++){ tot = tot + gross[i]; tsh = tsh + shows[i]; document.getElementById("g"+(i+1)).innerText = fmt(gross[i]); document.getElementById("s"+(i+1)).innerText = shows[i]; }
+  document.getElementById("tg").innerText = fmt(tot);
+  document.getElementById("ts").innerText = tsh;
+  document.getElementById("homeGross").innerText = fmt(tot);
+}
+var sec = 20*60;
+setInterval(function(){
+  sec = sec - 1;
+  if(sec<=0){
+    for(var i=0;i<8;i++){ gross[i] = Math.round(gross[i]*1.015); shows[i] = shows[i]+12; }
+    updateNumbers();
+    var t = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    document.getElementById("last").innerText = "Last Updated: " + t + " - Increased";
+    sec = 20*60;
+  }
+  var m = Math.floor(sec/60);
+  var s = sec % 60;
+  var txt = "";
+  if(m<10){ txt = txt + "0" + m; } else { txt = txt + m; }
+  txt = txt + ":";
+  if(s<10){ txt = txt + "0" + s; } else { txt = txt + s; }
+  document.getElementById("next").innerText = "Next Update " + txt;
+  document.getElementById("next2").innerText = txt;
+}, 1000);
+</script>
+</body>
+</html>
