@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#F2F2F2;font-family:sans-serif;padding-bottom:80px}
+.top{background:#fff;padding:16px;display:flex;gap:10px;position:sticky;top:0}
+.top h1{font-size:19px}.top span{background:#FF6B00;color:#fff;font-size:10px;padding:3px 7px;border-radius:20px}
+.card{background:#fff;margin:14px 16px;border-radius:18px;padding:12px}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:12px}
+.time{font-weight:800;font-size:16px;margin:8px 0 2px}
+.price{font-size:20px;font-weight:900}
+.sel{display:block;text-align:center;background:#FF6B00;color:#fff;text-decoration:none;padding:12px;border-radius:10px;font-weight:800;margin-top:10px}
+.detail{display:none;margin:14px 16px;background:#fff;border:2px solid #FF6B00;border-radius:18px;padding:16px}
+.detail:target{display:block}
+.detail img{width:100%;height:180px;object-fit:cover;border-radius:12px}
+.book{display:block;text-align:center;background:#0E7A3D;color:#fff;text-decoration:none;padding:14px;border-radius:12px;font-weight:800;margin-top:12px}
+.close{display:block;text-align:center;background:#eee;color:#000;text-decoration:none;padding:12px;border-radius:12px;margin-top:8px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="top"><div style="font-size:28px">🚌</div><div><h1>KERALA BUS LIVE <span>v6 NO-JS CLICK</span></h1><p>Click Test</p></div></div>
+
+<!-- BUS 1 DETAIL - click cheyyumbol ivide varum -->
+<div class="detail" id="bus1">
+<img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80">
+<h2 style="margin:10px 0">KSRTC Superfast</h2>
+<p>Kochi → Trivandrum</p>
+<p style="margin:10px 0;line-height:1.6">Stops: Kochi → Alappuzha → Kollam → Trivandrum<br>Time: 7:30 AM → 12:30 PM • 5h<br>⭐ 4.6 • Live Tracking</p>
+<p style="font-size:22px;font-weight:900;color:#FF6B00">₹180 per seat</p>
+<a class="book" href="https://onlineksrtc.com" target="_blank">Book on Official KSRTC →</a>
+<a class="close" href="#">Close ✕</a>
+</div>
+
+<!-- BUS 2 DETAIL -->
+<div class="detail" id="bus2">
+<img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&q=80">
+<h2 style="margin:10px 0">Night Rider</h2>
+<p>Ernakulam → Thrissur</p>
+<p style="margin:10px 0;line-height:1.6">Stops: Ernakulam → Angamaly → Thrissur<br>Time: 10:00 PM → 12:30 AM<br>⭐ 4.8 • AC Sleeper</p>
+<p style="font-size:22px;font-weight:900;color:#FF6B00">₹220 per seat</p>
+<a class="book" href="https://onlineksrtc.com" target="_blank">Book on Official KSRTC →</a>
+<a class="close" href="#">Close ✕</a>
+</div>
+
+<!-- BUS LIST -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80">
+<div class="time">7:30 AM → 12:30 PM • 5h</div>
+<p>Kochi → Trivandrum</p>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><span class="price">₹180</span><span>⭐ 4.6</span></div>
+<a class="sel" href="#bus1">Select Seats - Click Me 👆</a>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&q=80">
+<div class="time">10:00 PM → 12:30 AM • 2h 30m</div>
+<p>Ernakulam → Thrissur</p>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><span class="price">₹220</span><span>⭐ 4.8</span></div>
+<a class="sel" href="#bus2">Select Seats - Click Me 👆</a>
+</div>
+
+<p style="text-align:center;color:#888;font-size:13px;margin-top:10px">v6 - JS illathe click work aakum</p>
+</body>
+</html>
